@@ -32,6 +32,7 @@ def _preprocess_data(data):
 
     NB: If you have utilised feature engineering/selection in order to create
     your final model you will need to define the code here.
+    
 
 
     Parameters
@@ -45,9 +46,9 @@ def _preprocess_data(data):
         The preprocessed data, ready to be used our model for prediction.
     """
     # Convert the json string to a python dictionary object
-    feature_vector_dict = json.loads(data)
+    new_variable = json.loads(data)
     # Load the dictionary as a Pandas DataFrame.
-    feature_vector_df = pd.DataFrame.from_dict([feature_vector_dict])
+    new_variable = pd.DataFrame.from_dict([new_variable])
 
     # ---------------------------------------------------------------
     # NOTE: You will need to swap the lines below for your own data
@@ -57,30 +58,15 @@ def _preprocess_data(data):
     # receive marks for submitting this code in an unchanged state.
     # ---------------------------------------------------------------
 
-    # ----------- Replace this code with your own preprocessing steps --------
-    predict_vector = feature_vector_df[['Madrid_wind_speed','Bilbao_rain_1h','Valencia_wind_speed']]
-    # ------------------------------------------------------------------------
+    new_variable = ['Barcelona_pressure', 'Bilbao_wind_deg', 'Seville_clouds_all', 'Barcelona_wind_deg', 'Madrid_clouds_all', 'Bilbao_clouds_all', 'Bilbao_weather_id', 'Barcelona_weather_id', 'Madrid_humidity', 'Bilbao_snow_3h', 'Seville_humidity', 'Madrid_weather_id', 'Seville_weather_id', 'Valencia_humidity', 'Day_of_month', 'Hour_of_day', 'Seville_pressure', 'Barcelona_rain_1h', 'Valencia_wind_speed', 'Month_of_year', 'Valencia_wind_deg', 'Bilbao_wind_speed', 'Madrid_wind_speed', 'Day_of_week', 'Seville_wind_speed', 'Barcelona_wind_speed', 'Bilbao_rain_1h', 'Seville_rain_1h', 'Madrid_rain_1h', 'Madrid_pressure']    
 
-    return predict_vector
+    return new_variable
 
-def load_model(path_to_model:str):
-    """Adapter function to load our pretrained model into memory.
 
-    Parameters
-    ----------
-    path_to_model : str
-        The relative path to the model weights/schema to load.
-        Note that unless another file format is used, this needs to be a
-        .pkl file.
-
-    Returns
-    -------
-    <class: sklearn.estimator>
-        The pretrained model loaded into memory.
-
-    """
+def load_model(path_to_model:'/assets/trained-models/Linear_model.pkl'):
+    
+    
     return pickle.load(open(path_to_model, 'rb'))
-
 
 """ You may use this section (above the make_prediction function) of the python script to implement 
     any auxiliary functions required to process your model's artifacts.
